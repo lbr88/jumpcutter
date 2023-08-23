@@ -263,7 +263,7 @@ def speed_up_video(
         '-map', '1:a',
         '-c:a', 'aac',
         output_file,
-        '-loglevel', 'warning'
+        '-loglevel', 'warning',
         '-stats',
         '-y',
         '-hide_banner'
