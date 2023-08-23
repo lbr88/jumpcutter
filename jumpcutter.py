@@ -1,4 +1,4 @@
-#!/bin/env python3
+#!/usr/bin/env python3
 from audiotsm import phasevocoder
 from audiotsm.io.array import ArrayReader, ArrayWriter
 from scipy.io import wavfile
@@ -40,7 +40,7 @@ def _is_valid_input_file(filename) -> bool:
     p = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     outs, errs = None, None
     try:
-        outs, errs = p.communicate(timeout=0.1)
+        outs, errs = p.communicate(timeout=1)
     except subprocess.TimeoutExpired:
         p.kill()
         outs, errs = p.communicate()
@@ -263,7 +263,7 @@ def speed_up_video(
         '-map', '1:a',
         '-c:a', 'aac',
         output_file,
-        '-loglevel', 'warning'
+        '-loglevel', 'warning',
         '-stats',
         '-y',
         '-hide_banner'
